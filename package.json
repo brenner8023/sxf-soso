@@ -1,0 +1,19 @@
+{
+  "name": "sxf-soso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npx electron .",
+    "build": "electron-packager . --out ./dist --app-version 1.0.0 --overwrite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.3",
+    "electron-packager": "^15.2.0"
+  }
+}

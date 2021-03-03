@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sxf-soso</title>
+  <style>
+    .search-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-input {
+      width: 50%;
+      height: 45px;
+      border: rgba(85, 85, 85);
+      border-radius: 25px;
+      box-shadow: 1px 1px 6px 0 rgb(119 119 119 / 50%);
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    .search-input:focus {
+      outline: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="search-wrap">
+      <input
+        id="search-input"
+        class="search-input"
+        type="text"
+        autocomplete="off"
+        autofocus
+        placeholder="搜索...">
+    </div>
+  </div>
+  <script src="./src/render/index.js"></script>
+</body>
+</html>
