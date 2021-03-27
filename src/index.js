@@ -1,5 +1,17 @@
 const { app, BrowserWindow, BrowserView, ipcMain, screen } = require('electron');
 
+const isOpenDevTool = false;
+const SOSO_MAP = {
+  yandex: 'yandex',
+  baidu: 'baidu',
+  wechat: 'wechat'
+};
+const SOSO_MAP_URL = {
+  [SOSO_MAP.yandex]: 'https://yandex.com/search/?text=',
+  [SOSO_MAP.baidu]: 'https://www.baidu.com/s?wd=',
+  [SOSO_MAP.wechat]: 'https://weixin.sogou.com/weixin?type=2&query='
+};
+
 function createWin () {
   const size = screen.getPrimaryDisplay().workAreaSize;
   const screenWidth = size.width;
@@ -11,21 +23,17 @@ function createWin () {
     webPreferences: { nodeIntegration: true }
   });
   
-  // mainWin.webContents.openDevTools();
+  isOpenDevTool && mainWin.webContents.openDevTools();
 
   mainWin.loadFile('index.html');
 
   let browserViewMap = {
-    doge: new BrowserView({ webPreferences: { nodeIntegration: false }}),
-    baidu: new BrowserView({ webPreferences: { nodeIntegration: false }}),
-    wechat: new BrowserView({ webPreferences: { nodeIntegration: false }})
+    [SOSO_MAP.yandex]: new BrowserView({ webPreferences: { nodeIntegration: false }}),
+    [SOSO_MAP.baidu]: new BrowserView({ webPreferences: { nodeIntegration: false }}),
+    [SOSO_MAP.wechat]: new BrowserView({ webPreferences: { nodeIntegration: false }})
   };
 
-  let viewUrlMap = {
-    doge: 'https://www.dogedoge.com/results?q=',
-    baidu: 'https://www.baidu.com/s?wd=',
-    wechat: 'https://weixin.sogou.com/weixin?type=2&query='
-  };
+  let viewUrlMap = Object.freeze(SOSO_MAP_URL);
 
   Object.keys(browserViewMap)
         .forEach((k, idx) => {
